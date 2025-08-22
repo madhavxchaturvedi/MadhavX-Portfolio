@@ -30,7 +30,7 @@ export default function Calendar({ contributions }: Props) {
           ))}
         </ul>
 
-        <div className="flex justify-start gap-0.75 overflow-hidden">
+        <div className="flex justify-start gap-0.75 overflow-x-auto">
           {weeks?.map((week) => (
             <div key={week.firstDay}>
               {week.contributionDays.map((contribution) => {

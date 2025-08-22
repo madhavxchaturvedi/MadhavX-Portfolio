@@ -33,11 +33,13 @@ export default function Contributions() {
 
   return (
     <Fragment>
-      <div className="flex space-x-2">
-        <Days />
-        <Calendar contributions={contributions} />
-        <YearSelect selectedYear={year} onYearChange={setYear} />
-      </div>
+      
+        <div className="flex flex-wrap gap-2 items-start">
+          <Days />
+          <Calendar contributions={contributions} />
+          <YearSelect selectedYear={year} onYearChange={setYear} />
+        </div>
+      
       {/* <GithubStats contributions={contributions} /> */}
       <p className="mt-1 italic text-primary-500 dark:text-primary-500">
           Low squares ≠ low grind. Most of it lives behind closed PRs 🔒
