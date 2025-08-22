@@ -1,0 +1,138 @@
+---
+title: 'Demystifying libuv: The Engine Behind Node.js Async I/O'
+publishedAt: '2024-11-18'
+summary: 'An introduction to libuv, the C library that powers Node.js’s event loop and async I/O.'
+---
+
+### What is libuv?
+
+If you’ve ever wondered how **Node.js handles asynchronous tasks** like file I/O, timers, or networking, the secret lies in a powerful C library called **[libuv](https://libuv.org/)**.  
+It is the backbone of Node.js’s non-blocking architecture, enabling developers to write JavaScript that _feels_ single-threaded while still achieving high concurrency.
+
+Some of the things libuv provides:
+
+- An **event loop** implementation (the “heartbeat” of Node.js).
+- **Asynchronous I/O operations** (files, sockets, DNS, etc.).
+- A **thread pool** for expensive operations (e.g., filesystem, crypto).
+- **Cross-platform support** for Linux, macOS, and Windows.
+
+In short: Node.js delegates most of its async magic to libuv.
+
+---
+
+### Introduction
+
+When I first heard about libuv, I thought Node.js had its own built-in async engine. But the truth is, Node.js relies on **libuv (written in C)** to handle the tough low-level work, while JavaScript developers enjoy a clean API.
+
+In this article, we’ll explore:
+
+1. How the **event loop** works.
+2. How libuv handles **timers vs setImmediate**.
+3. How **async I/O** uses the thread pool.
+4. Why this design makes Node.js so powerful.
+
+> 📖 Recommended Reading:
+>
+> - [Node.js Event Loop Explained](https://nodejs.dev/en/learn/the-nodejs-event-loop/)
+> - [libuv GitHub Repository](https://github.com/libuv/libuv)
+> - [Official Node.js Docs on Timers](https://nodejs.org/en/docs/guides/timers-in-node/)
+
+### The Event Loop
+
+At the core of libuv lies the **event loop** — a constantly running loop that processes different phases of tasks.
+
+Here’s a simplified diagram:
+
+```txt
+┌───────────────────────┐
+│       timers          │ ← setTimeout, setInterval
+├───────────────────────┤
+│   pending callbacks   │
+├───────────────────────┤
+│       poll            │ ← network, file I/O
+├───────────────────────┤
+│       check           │ ← setImmediate
+├───────────────────────┤
+│   close callbacks     │
+└───────────────────────┘
+```
+
+### Timers vs setImmediate
+
+A common beginner confusion:
+setTimeout(fn, 0) vs setImmediate(fn)
+
+```js
+setTimeout(() => {
+  console.log('Timeout callback');
+}, 0);
+
+setImmediate(() => {
+  console.log('Immediate callback');
+});
+```
+
+Output might be:
+
+```bash
+Immediate callback
+Timeout callback
+```
+
+Why? Because setImmediate runs in the check phase, while setTimeout waits until the timers phase in the next cycle.
+This subtle behavior comes straight from libuv’s event loop design.
+
+Deeper dive: **[Node.js Event Loop Phases](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick)**
+
+### Async I/O and the Thread Pool
+
+Not all tasks can be done in the event loop (like heavy file operations or crypto).
+Libuv delegates these to a thread pool.
+
+```js
+const fs = require('fs');
+
+fs.readFile('bigfile.txt', 'utf8', (err, data) => {
+  if (err) throw err;
+  console.log('File read complete');
+});
+```
+
+While Node.js looks single-threaded, libuv uses its thread pool to offload fs.readFile. The event loop gets notified once it’s done.
+
+Visualization:
+
+```txt
+┌─────────────┐      ┌─────────────┐
+│ Event Loop  │ ---> │ Thread Pool │ → Heavy I/O (fs, crypto, dns)
+└─────────────┘      └─────────────┘
+```
+
+See:**[ libuv Threadpool Docs](http://docs.libuv.org/en/v1.x/threadpool.html)**
+
+### Network I/O Example
+
+Node.js networking APIs like net, http, and tls are powered by libuv.
+Here’s a simple TCP server:
+
+```js
+const net = require('net');
+
+const server = net.createServer((socket) => {
+  socket.write('Hello from libuv-powered Node.js!\n');
+  socket.end();
+});
+
+server.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
+```
+
+Here, libuv manages the non-blocking socket handling — multiple clients can connect at once without blocking the main thread
+
+Libuv is the unsung hero of Node.js. Without it, JavaScript would still be stuck with synchronous blocking calls.
+It’s a brilliant example of how low-level C code enables high-level developer experience.
+The next time you run setTimeout, read a file, or spin up an HTTP server — remember that libuv is quietly doing the heavy lifting under the hood 🚀
+
+So next time someone says “Node.js is single-threaded,” you can smile and say:
+“Yes, but libuv is doing the real multitasking in the shadows.” 😎
