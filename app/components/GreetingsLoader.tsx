@@ -279,7 +279,7 @@ export function GreetingsLoader({
           z-index: 1;
           font-weight: 900;
           letter-spacing: 0.06em;
-          color: rgba(255,255,255,0.04);
+          color: rgba(82, 24, 250, 0.25);
           white-space: nowrap;
           user-select: none;
           pointer-events: none;
