@@ -13,19 +13,19 @@
 1. Clone this repo
 
 ```bash
-git clone git@github.com:dlarroder/dalelarroder.git
+git clone https://github.com/madhavxchaturvedi/MadhavX-Portfolio.git
 ```
 
 2. Change directory
 
 ```sh
-cd dalelarroder
+cd MadhavX-Portfolio
 ```
 
 3. Install dependencies
 
 ```bash
-bun install
+npm install
 ```
 
 1. Create a `.env.local` file following the `.env.example`
@@ -46,17 +46,5 @@ SPOTIFY_CLIENT_ID=<Your env>
 6. Run the development server
 
 ```bash
-bun run dev
+npm run dev
 ```
-
-## Previous Version
-
-This is the second version of my website.
-
-Prevoius v1 version:
-
-- https://v1.dalelarroder.com/
-
-## Licence
-
-[MIT](https://github.com/dlarroder/dalelarroder/blob/master/LICENSE) © [Dale Larroder](https://www.dalelarroder.com)
