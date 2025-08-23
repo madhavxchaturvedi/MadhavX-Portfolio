@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 import ThemeSwitch from './components/layouts/theme-switch/theme-switch';
 import { mukta } from './fonts';
 import './tailwind.css';
-
+import { LoaderProvider } from './components/LoaderProvider';
 export const metadata: Metadata = {
   title: {
     template: '%s | Madhav Chaturvedi',
@@ -53,7 +53,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <LenisProvider>
             <ThemeSwitch />
+            <LoaderProvider>
+
             {children}
+            </LoaderProvider>
           </LenisProvider>
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>

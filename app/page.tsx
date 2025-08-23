@@ -1,5 +1,6 @@
 "use client";
-import { useState } from 'react';
+import { useLoader } from "./components/LoaderProvider"; 
+import { useState, useEffect } from 'react';
 import Contact from './components/contact';
 import GreetingsLoader from './components/GreetingsLoader';
 import Hero from './components/hero-v2/hero';
@@ -9,7 +10,9 @@ import Works from './components/work/works';
 import { AnimatePresence, motion } from "motion/react";
 
 export default function Home() {
-    const [bootDone, setBootDone] = useState(false);
+  const {bootDone, setBootDone} = useLoader();
+
+
   return (
     // <ScrollProvider>
     //   <Hero />
