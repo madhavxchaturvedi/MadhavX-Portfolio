@@ -10,7 +10,7 @@ import TopTracksLong from 'app/components/spotify/top-tracks-long';
 
 export const metadata = {
   title: 'Stats',
-  description: 'My Stats - Dale Larroder',
+  description: 'My Stats - Madhav Chaturvedi',
 };
 
 export default function StatsPage() {

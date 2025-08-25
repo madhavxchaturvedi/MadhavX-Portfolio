@@ -22,7 +22,7 @@ export const workTiles: WorkTile[] = [
     description: 'I built',
     title: 'DevTinder',
     image: {
-      src: '/static/images/project/DTinder SS.png',
+      src: '/static/images/Untitled design (4)-Photoroom.png',
       width: 600,
       height: 554,
     },

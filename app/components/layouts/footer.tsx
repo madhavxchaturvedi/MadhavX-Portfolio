@@ -36,7 +36,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://github.com/dlarroder"
+                  href="https://github.com/madhavxchaturvedi"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="github"

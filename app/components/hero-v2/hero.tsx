@@ -7,6 +7,7 @@ import { GithubIcon } from '../layouts/icons/github-icon';
 import { LinkedinIcon } from '../layouts/icons/linkedin-icon';
 import { XIcon } from '../layouts/icons/x-icon';
 import ArrowDown from './arrow-down';
+import { InstagramIcon } from '../layouts/icons/instagram-icon';
 
 export default function Hero() {
   return (
@@ -69,6 +70,16 @@ export default function Hero() {
                   >
                     <XIcon className="h-9 w-9" />
                   </Link> */}
+                
+                  <Link
+                    href="https://www.instagram.com/madhavxchaturvedi/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="instagram"
+                  >
+                    <InstagramIcon className="h-9 w-9" />
+                  </Link>
+              
                   <Link
                     href="mailto:madhavchaturvedi0562@gmail.com"
                     aria-label="email"

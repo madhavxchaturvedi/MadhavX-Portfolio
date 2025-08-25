@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     default: 'Madhav Chaturvedi',
   },
   description: 'I build things for the web.',
-  metadataBase: new URL('https://MadhavXChaturvedi.com'),
+  metadataBase: new URL('https://madhavxchaturvedi.vercel.app/'),
 };
 
 interface RootLayoutProps {
