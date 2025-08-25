@@ -1,50 +1,55 @@
-# MadhavXChaturvedi⚡️
+# 🚀 Madhav Chaturvedi – Portfolio
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Deployment**: [Vercel](https://vercel.com)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Analytics**: [Logrocket](https://logrocket.com/)
-- **Content**: [MDX](https://mdxjs.com/)
+![Portfolio](https://img.shields.io/badge/Website-Live-brightgreen?style=for-the-badge&logo=vercel)  
+[![GitHub](https://img.shields.io/badge/Code-GitHub-black?style=for-the-badge&logo=github)](https://github.com/YOUR_GITHUB_USERNAME/madhavxchaturvedi)  
+[![LinkedIn](https://img.shields.io/badge/Connect-LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/YOUR_LINKEDIN)  
 
-## Running Locally
+---
 
-### Installation
+## 📖 About
+This is my **personal portfolio website**, built to showcase my projects, skills, and experience.  
+It’s modern, fast, and responsive – optimized for both desktop and mobile.
 
-1. Clone this repo
+🔗 **Live Demo:** [https://madhavxchaturvedi.vercel.app/]
 
-```bash
-git clone https://github.com/madhavxchaturvedi/MadhavX-Portfolio.git
-```
+---
 
-2. Change directory
+## ⚡ Tech Stack
 
-```sh
-cd MadhavX-Portfolio
-```
+![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js)  
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)  
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)  
+![Motion](https://img.shields.io/badge/Motion-FF5C8D?style=for-the-badge&logo=framer&logoColor=white)  
+![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)  
 
-3. Install dependencies
+---
 
-```bash
-npm install
-```
+## ✨ Features
+- 🎭 Greeting Loader with animations  
+- 🎨 Responsive design with TailwindCSS  
+- ⚡ Smooth scrolling with Lenis  
+- 🌙 Dark/Light theme support  
+- 📊 GitHub contributions calendar  
+- 🎵 Spotify "Now Playing" integration  
+- 📱 Fully mobile-optimized  
 
-1. Create a `.env.local` file following the `.env.example`
+---
 
-```bash
-cp .env.example .env.local
-```
-
-5. Add your environment variables to `.env.local`
-
-```txt
-SPOTIFY_REFRESH_TOKEN=<Your env>
-SPOTIFY_CLIENT_SECRET=<Your env>
-SPOTIFY_CLIENT_ID=<Your env>
-// ...
-```
-
-6. Run the development server
+## 🛠 Installation & Setup
 
 ```bash
-npm run dev
-```
+# Clone repo
+git clone https://github.com/YOUR_GITHUB_USERNAME/madhavxchaturvedi.git
+
+# Enter project folder
+cd madhavxchaturvedi
+
+# Install deps
+yarn install
+
+# Start dev server
+yarn dev
+
+# Build & run production
+yarn build && yarn start
