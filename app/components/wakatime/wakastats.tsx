@@ -8,7 +8,14 @@ export default async function WakaStats() {
   const allTimeStats = await getAllTimeStats();
   const thisWeekStats = await getStatsThisWeek();
 
-  const { hours, minutes } = extractHoursAndMinutes(allTimeStats.text);
+  // Handle null or missing data gracefully
+  if (!allTimeStats || !thisWeekStats) {
+    return null;
+  }
+
+  const { hours, minutes } = extractHoursAndMinutes(
+    allTimeStats.text || '0 hrs 0 mins',
+  );
 
   return (
     <section className="space-y-4 mt-7">
@@ -27,30 +34,32 @@ export default async function WakaStats() {
         </StatItem>
         <StatItem title="Best Day Coding">
           <span>
-  {thisWeekStats.best_day
-    ? `${format(thisWeekStats.best_day.date, 'PP')} — `
-    : 'No best day data — '}
-</span>
+            {thisWeekStats.best_day
+              ? `${format(thisWeekStats.best_day.date, 'PP')} — `
+              : 'No best day data — '}
+          </span>
           <AnimatedNumber
-            number={secondsToHours(thisWeekStats.best_day.total_seconds)}
+            number={secondsToHours(thisWeekStats.best_day?.total_seconds || 0)}
           />{' '}
           <span>hours</span>
         </StatItem>
         <StatItem title="Daily Average">
-          <AnimatedNumber number={secondsToHours(allTimeStats.daily_average)} />{' '}
+          <AnimatedNumber
+            number={secondsToHours(allTimeStats.daily_average || 0)}
+          />{' '}
           <span>hours / </span>
           <AnimatedNumber
-            number={secondsToMinutes(allTimeStats.daily_average)}
+            number={secondsToMinutes(allTimeStats.daily_average || 0)}
           />{' '}
           <span>minutes</span>
         </StatItem>
         <StatItem title="Weekly Average">
           <AnimatedNumber
-            number={secondsToHours(thisWeekStats.daily_average)}
+            number={secondsToHours(thisWeekStats.daily_average || 0)}
           />{' '}
           <span>hours / </span>
           <AnimatedNumber
-            number={secondsToMinutes(thisWeekStats.daily_average)}
+            number={secondsToMinutes(thisWeekStats.daily_average || 0)}
           />{' '}
           <span>minutes</span>
         </StatItem>
