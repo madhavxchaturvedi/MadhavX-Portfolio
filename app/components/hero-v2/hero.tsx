@@ -1,18 +1,20 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { merryWeather } from '../../fonts';
-import { BackgroundGradientAnimation } from '../background-gradient-animation';
 import { AtSignIcon } from '../layouts/icons/at-sign-icon';
 import { GithubIcon } from '../layouts/icons/github-icon';
 import { LinkedinIcon } from '../layouts/icons/linkedin-icon';
-import { XIcon } from '../layouts/icons/x-icon';
 import ArrowDown from './arrow-down';
 import { InstagramIcon } from '../layouts/icons/instagram-icon';
+import SplashCursor from '../splash-cursor';
 
 export default function Hero() {
   return (
     <main className="relative min-h-svh w-screen overflow-hidden">
-      <BackgroundGradientAnimation>
+      <SplashCursor
+        containerClassName="min-h-svh w-screen"
+        usePrimaryColors={true}
+      >
         <div
           className={classNames('relative min-h-svh', merryWeather.className)}
         >
@@ -26,11 +28,12 @@ export default function Hero() {
             </h1>
             <section className="relative z-10">
               <p className="text-base text-justify">
-                I&apos;m Madhav Chaturvedi — a Full Stack Developer and forever a
-                student of the craft. I love building things for the web and am
-                always on the lookout for new challenges and opportunities to
+                I&apos;m Madhav Chaturvedi — a Full Stack Developer and forever
+                a student of the craft. I love building things for the web and
+                am always on the lookout for new challenges and opportunities to
                 learn. I&apos;m passionate about creating beautiful and
-                functional user experiences. Right now, I&apos;m working on projects like{' '}
+                functional user experiences. Right now, I&apos;m working on
+                projects like{' '}
                 <a
                   href="https://github.com/madhavxchaturvedi/DevTinder-Frontend"
                   className="underline-magical"
@@ -70,7 +73,7 @@ export default function Hero() {
                   >
                     <XIcon className="h-9 w-9" />
                   </Link> */}
-                
+
                   <Link
                     href="https://www.instagram.com/madhavxchaturvedi/"
                     target="_blank"
@@ -79,7 +82,7 @@ export default function Hero() {
                   >
                     <InstagramIcon className="h-9 w-9" />
                   </Link>
-              
+
                   <Link
                     href="mailto:madhavchaturvedi0562@gmail.com"
                     aria-label="email"
@@ -99,7 +102,7 @@ export default function Hero() {
             </section>
           </div>
         </div>
-      </BackgroundGradientAnimation>
+      </SplashCursor>
     </main>
   );
 }

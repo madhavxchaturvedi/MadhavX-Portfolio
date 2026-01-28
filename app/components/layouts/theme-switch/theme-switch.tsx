@@ -14,10 +14,11 @@ const ThemeSwitch = () => {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="absolute top-4 right-4 z-10">
+    <div className="fixed top-4 right-4 z-[9999]">
       <motion.button
         aria-label="Toggle Dark Mode"
         type="button"
+        className="cursor-pointer"
         whileTap={{
           scale: 0.7,
           rotate: 360,
