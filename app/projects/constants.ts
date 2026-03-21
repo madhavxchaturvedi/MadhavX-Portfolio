@@ -5,7 +5,7 @@ export const projects: Project[] = [
     title: 'DevTinder',
     src: 'DTinder SS.png',
     color: '#FA1E0E',
-    url: 'https://github.com/madhavxchaturvedi/DevTinder-Frontend',
+    url: 'https://devxtinder.vercel.app',
     role: 'Fullstack Developer',
   },
   {
