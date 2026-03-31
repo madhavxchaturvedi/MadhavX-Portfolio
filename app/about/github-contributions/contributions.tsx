@@ -26,25 +26,24 @@ export default function Contributions() {
           <GithubCalendarSkeleton />
           <YearSelect selectedYear={year} onYearChange={setYear} />
         </div>
-        {/* <GithubStatsSkeleton /> */}
+        <GithubStatsSkeleton />
       </div>
     );
   }
 
   return (
     <Fragment>
-      
-        <div className="flex flex-wrap gap-2 items-start">
-          <Days />
-          <Calendar contributions={contributions} />
-          <YearSelect selectedYear={year} onYearChange={setYear} />
-        </div>
-      
-      {/* <GithubStats contributions={contributions} /> */}
+      <div className="flex flex-wrap gap-2 items-start">
+        <Days />
+        <Calendar contributions={contributions} />
+        <YearSelect selectedYear={year} onYearChange={setYear} />
+      </div>
       <p className="mt-1 italic text-primary-500 dark:text-primary-500">
-          Low squares ≠ low grind. Most of it lives behind closed PRs 🔒
-          <br/>Trust me, we’re not the same, bro 🚀
+        Low squares ≠ low grind. Most of it lives behind closed PRs.
+        <br />
+        Trust me, we’re not the same, bro.
       </p>
+      <GithubStats contributions={contributions} />
     </Fragment>
   );
 }
