@@ -5,7 +5,17 @@ import { Song, TrackInfo } from './types';
 async function fetchTopTracks(): Promise<Song[] | null> {
   try {
     const response = await getTopTracksLong();
-    const { items } = await response.json();
+
+    if (!response?.ok) {
+      return null;
+    }
+
+    const data = await response.json().catch(() => null);
+    const items = data?.items;
+
+    if (!Array.isArray(items)) {
+      return null;
+    }
 
     const tracks = items?.slice(0, 5).map((track: TrackInfo) => ({
       artist: track.artists.map((_artist) => _artist.name).join(', '),
@@ -27,7 +37,20 @@ export default async function TopTracksLong() {
   const topTracks = await fetchTopTracks();
 
   if (!topTracks) {
-    return null;
+    return (
+      <section className="py-7">
+        <p className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
+          All-Time Favorite Anthems
+        </p>
+        <p className="text-gray-500 dark:text-gray-400 leading-4">
+          The songs I&apos;ve listened to the most overall.
+        </p>
+        <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+          Top tracks are unavailable right now. Check your Spotify token scopes
+          (`user-top-read`) and environment variables.
+        </p>
+      </section>
+    );
   }
 
   return (
@@ -36,7 +59,7 @@ export default async function TopTracksLong() {
         All-Time Favorite Anthems
       </p>
       <p className="text-gray-500 dark:text-gray-400 leading-4">
-        he songs I’ve listened to the most overall.
+        The songs I&apos;ve listened to the most overall.
       </p>
       {topTracks.map((track, index) => (
         <Track ranking={index + 1} key={track.songUrl} track={track} />
