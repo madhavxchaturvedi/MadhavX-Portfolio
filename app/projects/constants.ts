@@ -9,6 +9,20 @@ export const projects: Project[] = [
     role: 'Fullstack Developer',
   },
   {
+    title: 'PhantomBack CLI',
+    src: 'phantomBack.png',
+    color: '#5454da',
+    url: 'https://phantombackxdocs.vercel.app/',
+    role: 'NPM Package Creator',
+  },
+  {
+    title: 'ShadowTalk',
+    src: 'ShadowTalk.png',
+    color: '#151714',
+    url: 'https://shadowxtalk.vercel.app',
+    role: 'Fullstack Developer',
+  },
+  {
     title: 'CosmicCove',
     src: 'cosmiccove ss (1).png',
     color: '#A2AADB',
